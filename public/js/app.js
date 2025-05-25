@@ -16,7 +16,7 @@ createApp({
     const isSending = ref(false);
     const emailStatusMessage = ref('');
 
-    const birthday = new Date('May 25, 2025 00:00:00').getTime();
+    const birthday = new Date('May 26, 2025 00:00:00').getTime();
     let interval;
 
     const playConfetti = () => {
@@ -77,7 +77,7 @@ createApp({
 
       isSending.value = true;
       showEmailMessage.value = false;
-      const sherlysEmailAddress = 'rayhanaprasnaputra@gmail.com';
+      const sherlysEmailAddress = 'medianathar@gmail.com';
 
       try {
         const response = await fetch('/send-wishes', {
