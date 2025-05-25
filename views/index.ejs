@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>A Special Surprise for Sherly</title>
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <div id="app" class="container">
+
+    <div v-if="!isAfterMidnight" id="countdown">
+      <h1>Sebentar lagi, diana akan ultah!!</h1>
+      <div id="timer">{{ timerDisplay }}</div>
+      <p style="margin-top: 20px;">Get ready ❤️</p>
+    </div>
+
+    <div v-if="showForm" id="surprise">
+      <h1>Happy 21st Birthday, diana sayang!</h1>
+      <p>Kamu keren! Sudah mengisi umur 20 kamu dengan hal-hal yang terbaik dan dikelilingi oleh orang-orang yang baik.</p>
+      <p>Semoga di umur ke 21 ini, diana makin pinter, cantik, bahagia, sehat, dan bugar yaa!</p>
+      
+      <div class="resolutions-section section-block">
+        <h2>Apa yang pengen kamu capai di umur 21?</h2>
+        <div v-for="(resolution, index) in resolutions" :key="'resolution-' + index" class="input-group">
+          <input type="text" v-model="resolutions[index]" :placeholder="`Pengen deh... ke-${index + 1}`" class="themed-input">
+        </div>
+        <button @click="addResolution" class="btn add-btn" :disabled="isSending">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16" style="margin-right: 5px;"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+          Add Another Resolution
+        </button>
+      </div>
+
+      <div class="prayers-section section-block">
+        <h2>Berdoa yuk!</h2>
+        <div v-for="(prayer, index) in prayers" :key="'prayer-' + index" class="input-group">
+          <input type="text" v-model="prayers[index]" :placeholder="`Semoga...`" class="themed-input">
+        </div>
+      </div>
+      
+      <button @click="submitWishesAndPrayers" class="btn submit-btn" :disabled="isSending">
+        {{ isSending ? 'Sending...' : 'Send Wishes & Prayers to medianathar' }}
+      </button>
+
+      <p v-if="showEmailMessage" class="email-message">
+        {{ emailStatusMessage }}
+      </p>
+
+      <p style="margin-top: 30px; font-weight: bold;">Can't wait to make more memories with you.</p>
+      <p style="font-size: 0.9rem;">Love, Rayhun</p>
+    </div>
+
+  </div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

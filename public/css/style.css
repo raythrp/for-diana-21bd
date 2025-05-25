@@ -1,0 +1,183 @@
+/* public/css/style.css - Optimized for Modern Mobile */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* --- Universal Improvements --- */
+*, *::before, *::after {
+  box-sizing: border-box; /* More predictable sizing */
+}
+
+body {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); /* Slightly softer gradient */
+  font-family: 'Poppins', sans-serif;
+  color: #4a4a4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* IMPROVEMENT: Use dynamic viewport height for mobile */
+  min-height: 100dvh; 
+  margin: 0;
+  text-align: center;
+  overflow-x: hidden;
+  /* IMPROVEMENT: Add padding to respect iPhone safe areas (notch/home bar) */
+  padding-left: env(safe-area-inset-left, 20px);
+  padding-right: env(safe-area-inset-right, 20px);
+  padding-top: env(safe-area-inset-top, 20px);
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+}
+
+.container {
+  padding: 25px 30px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  width: 100%; 
+  margin: 20px; /* CHANGED: This now applies a 20px margin on ALL sides */
+}
+
+#countdown h1 {
+  font-size: clamp(1.5rem, 5vw, 1.8rem);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+#timer {
+  font-size: clamp(2rem, 8vw, 2.8rem); /* Slightly larger max size */
+  font-weight: bold;
+  color: #e91e63;
+}
+
+#surprise {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+#surprise h1 {
+  font-size: clamp(1.8rem, 6vw, 2.2rem);
+  color: #e91e63;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+#surprise p {
+  font-size: clamp(1rem, 3.5vw, 1.1rem); /* Min size 1rem (16px) */
+  line-height: 1.7;
+  margin-top: 15px;
+}
+
+.section-block {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.section-block h2 {
+  font-size: clamp(1.2rem, 4vw, 1.4rem);
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.themed-input {
+  width: 100%;
+  padding: 14px 16px; /* Slightly more padding */
+  border: 1px solid #ddd;
+  border-radius: 12px; /* Larger radius for modern look */
+  /* IMPROVEMENT: Set min font-size to 16px (1rem) to prevent iOS auto-zoom */
+  font-size: 1rem; 
+  -webkit-text-size-adjust: 100%; /* Prevent font size adjustments on orientation change */
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.themed-input:focus {
+  border-color: #e91e63;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
+}
+
+.btn {
+  padding: 14px 22px;
+  border: none;
+  border-radius: 12px; /* Larger radius */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  -webkit-tap-highlight-color: transparent; /* IMPROVEMENT: Remove ugly gray tap highlight on iOS */
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* IMPROVEMENT: Add active state for better touch feedback on mobile */
+.btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.add-btn {
+  background-color: #5cb85c; 
+  color: white;
+  margin-bottom: 10px; 
+}
+
+.submit-btn {
+  background-color: #e91e63; 
+  color: white;
+  margin-top: 20px;
+  width: 100%;
+  padding: 16px 20px; /* More padding for the main button */
+  font-size: 1.1rem;
+}
+
+.submit-btn:hover {
+  background-color: #d81b60;
+}
+
+.email-message {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #28a745;
+}
+
+/* NEW: Added an error class for potential future use */
+.email-message.error {
+    color: #dc3545;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Media query is still useful for any other small adjustments */
+@media (max-width: 480px) {
+  .btn {
+    width: 100%; 
+    margin-right: 0; 
+  }
+  .add-btn {
+    margin-bottom: 15px;
+  }
+   .submit-btn {
+    margin-top: 25px;
+  }
+}
